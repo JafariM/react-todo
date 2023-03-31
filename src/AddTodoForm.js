@@ -4,14 +4,11 @@ function AddTodoForm(props) {
 
   function handleAddTodo(event) {
     event.preventDefault();
-    let titleInput = event.target[0];
-    let todoTitle = titleInput.value;
-
+    let todoTitle = event.target.title.value;
     //pass the value of input form to App.js
     props.onAddTodo(todoTitle);
     console.log(todoTitle);
-    // clear input form
-    titleInput.value = '';
+    event.target.reset();
   }
 
   return (
