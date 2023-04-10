@@ -10,7 +10,7 @@ function AddTodoForm(props) {
     console.log(todoTitle);
     event.target.reset();
   }
-
+  console.log('Addtodoform is rendered');
   return (
     <form onSubmit={handleAddTodo}>
       <label htmlFor="todoTitle">Title:</label>
