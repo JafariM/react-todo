@@ -2,9 +2,10 @@ import React from "react";
 
 
 function TodoListItem(props) {
-  console.log('todolistitem is rendered');
+  //Destructure props 
+  const { todo } = props;
   return (
-    <li>{props.todo}</li>
+    <li>{todo}</li>
   )
 }
 
