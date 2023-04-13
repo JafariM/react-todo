@@ -1,10 +1,16 @@
 import React from 'react';
+import TodoListItem from './TodoListItem';
 
-function TodoList() {
+
+
+function TodoList(props) {
+  //Destructure props 
+  const { todoList, } = props;
   return (
     <ul>
       {todoList.map(function (item) {
-        return (<li key={item.id}>{item.title}</li>)
+
+        return (<TodoListItem key={item.id} todo={item.title} />)
       })}
     </ul>
   )
@@ -12,17 +18,3 @@ function TodoList() {
 
 export default TodoList;
 
-const todoList = [
-  {
-    id: 1,
-    title: 'Complete assignment'
-  },
-  {
-    id: 2,
-    title: 'praper the lunch'
-  },
-  {
-    id: 3,
-    title: 'pick up my son from school'
-  }
-];
