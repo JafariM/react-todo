@@ -1,16 +1,16 @@
 import React from "react";
 
-function AddTodoForm(props) {
+function AddTodoForm({ onAddTodo }) {
 
+  //state of input form for adding todo title
   const [todoTitle, setTodoTitle] = React.useState('');
-  const { onAddTodo } = props;
 
   function handleTitleChange(event) {
-
     const newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   }
 
+  //handle form submission
   function handleAddTodo(event) {
     event.preventDefault();
     //pass the value of input form to App.js
@@ -18,7 +18,7 @@ function AddTodoForm(props) {
       title: todoTitle,
       id: Date.now()
     });
-    console.log(todoTitle);
+    //empty input field
     setTodoTitle('');
   }
 
