@@ -3,9 +3,7 @@ import TodoListItem from './TodoListItem';
 
 
 
-function TodoList(props) {
-  //Destructure props 
-  const { todoList, } = props;
+function TodoList({ todoList }) {
   return (
     <ul>
       {todoList.map(function (item) {

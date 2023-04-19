@@ -1,9 +1,7 @@
 import React from "react";
 
 
-function TodoListItem(props) {
-  //Destructure props 
-  const { todo } = props;
+function TodoListItem({ todo }) {
   return (
     <li>{todo}</li>
   )
