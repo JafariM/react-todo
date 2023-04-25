@@ -2,11 +2,12 @@ import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
+//define a custom hook to syn todolist and browser local storage
 function useSemiPersistentState() {
   const [todoList, setTodoList] = React.useState(
-    JSON.parse(localStorage.getItem('savedTodoList')) // read initial value of state hook form local storage
+    JSON.parse(localStorage.getItem('savedTodoList') || []) // read initial value of state hook form local storage
   );
-  //set a side effect hook to save the todolist in browser's local storge
+  //set a side effect hook to save the todolist in browser's local storage
   React.useEffect(() => {
     localStorage.setItem('savedTodoList', JSON.stringify(todoList))
   }, ['savedTodoList', JSON.stringify(todoList)]); // with stringify we can read the values inside todolist array
@@ -15,6 +16,8 @@ function useSemiPersistentState() {
 
 function App() {
   const [todoList, setTodoList] = useSemiPersistentState();
+
+  // add new todo to the list and update todolist
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo])
   }
@@ -22,7 +25,6 @@ function App() {
     <>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
-
       <TodoList todoList={todoList} />
     </>
   );
