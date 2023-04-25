@@ -1,13 +1,14 @@
-function InputWithLabel(props) {
+
+function InputWithLabel({ todoTitle, handleTitleChange, Children }) {
   return (
     <>
-      <label htmlFor="todoTitle">{props.label}:</label>
+      <label htmlFor="todoTitle">{Children}</label>
       <input
         type="text"
         id="todoTitle"
         name="title"
-        value={props.todoTitle}
-        onChange={props.handleTitleChange}>
+        value={todoTitle}
+        onChange={handleTitleChange}>
       </input>
     </>
   )

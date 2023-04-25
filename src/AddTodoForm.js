@@ -28,8 +28,9 @@ function AddTodoForm({ onAddTodo }) {
       <InputWithLabel
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
-        label={'Title'}
-      />
+      >
+        <strong>Title</strong>
+      </InputWithLabel>
       <button type="submit" >Add</button>
       <p>This is new to do list item:<strong>{todoTitle}</strong></p>
     </form>
