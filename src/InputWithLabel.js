@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputWithLabel({ todoTitle, handleTitleChange, Children }) {
+function InputWithLabel({ children, todoTitle, handleTitleChange }) {
 
   //add a state hook to keep input field focused after submission
   const inputRef = React.useRef();
@@ -10,7 +10,7 @@ function InputWithLabel({ todoTitle, handleTitleChange, Children }) {
 
   return (
     <>
-      <label htmlFor="todoTitle">{Children}</label>
+      <label htmlFor="todoTitle">{children}</label>
       <input
         type="text"
         id="todoTitle"
