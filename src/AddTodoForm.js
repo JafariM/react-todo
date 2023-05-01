@@ -1,4 +1,5 @@
 import React from "react";
+import InputWithLabel from "./InputWithLabel";
 
 function AddTodoForm({ onAddTodo }) {
 
@@ -24,8 +25,12 @@ function AddTodoForm({ onAddTodo }) {
 
   return (
     <form onSubmit={handleAddTodo}>
-      <label htmlFor="todoTitle">Title:</label>
-      <input type="text" id="todoTitle" name="title" value={todoTitle} onChange={handleTitleChange}></input>
+      <InputWithLabel
+        todoTitle={todoTitle}
+        handleTitleChange={handleTitleChange}
+      >
+        <strong>Title</strong>
+      </InputWithLabel>
       <button type="submit" >Add</button>
       <p>This is new to do list item:<strong>{todoTitle}</strong></p>
     </form>
