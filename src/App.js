@@ -17,9 +17,19 @@ import AddTodoForm from './AddTodoForm';
 // }
 
 function App() {
-  const [todoList, setTodoList] = React.useState(
-    JSON.parse(localStorage.getItem('savedTodoList') || []) // read initial value of state hook form local storage
-  );
+  const [todoList, setTodoList] = React.useState([])
+
+  React.useEffect(() => {
+    new Promise((resolve, reject) => {
+      setTimeout(
+        // read initial value of state hook form local storage
+        () => resolve({ data: { todoList: JSON.parse(localStorage.getItem('savedTodoList')) } }),
+        2000)
+    }).then((result) => {
+      setTodoList(result.data.todoList)
+    }
+    )
+  }, []);
   //set a side effect hook to save the todolist in browser's local storage
   React.useEffect(() => {
     localStorage.setItem('savedTodoList', JSON.stringify(todoList))
