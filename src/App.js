@@ -37,7 +37,6 @@ function App() {
     if (!isLoading) {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList))
     }
-
   }, ['savedTodoList', JSON.stringify(todoList)]); // with stringify we can read the values inside todolist array
 
   // const [todoList, setTodoList] = useSemiPersistentState();
@@ -59,7 +58,7 @@ function App() {
     <>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      {isLoading ? <p>Loading</p> : <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
     </>
   );
 }
