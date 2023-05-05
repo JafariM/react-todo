@@ -17,7 +17,8 @@ import AddTodoForm from './AddTodoForm';
 // }
 
 function App() {
-  const [todoList, setTodoList] = React.useState([])
+  const [todoList, setTodoList] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     new Promise((resolve, reject) => {
@@ -26,13 +27,17 @@ function App() {
         () => resolve({ data: { todoList: JSON.parse(localStorage.getItem('savedTodoList')) } }),
         2000)
     }).then((result) => {
-      setTodoList(result.data.todoList)
+      setTodoList(result.data.todoList);
+      setIsLoading(false);
     }
     )
   }, []);
   //set a side effect hook to save the todolist in browser's local storage
   React.useEffect(() => {
-    localStorage.setItem('savedTodoList', JSON.stringify(todoList))
+    if (!isLoading) {
+      localStorage.setItem('savedTodoList', JSON.stringify(todoList))
+    }
+
   }, ['savedTodoList', JSON.stringify(todoList)]); // with stringify we can read the values inside todolist array
 
   // const [todoList, setTodoList] = useSemiPersistentState();
