@@ -1,6 +1,7 @@
 import React from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //NO USE
 //define a custom hook to syn todolist and browser local storage
@@ -77,7 +78,6 @@ function App() {
       }
 
       const dataResponse = await response.json();
-      console.log(dataResponse);
       const fetchNewTodo = {
         id: dataResponse.id,
         title: dataResponse.fields.title,
@@ -117,25 +117,26 @@ function App() {
     fetchData();
   }, []);
 
-  //set a side effect hook to save the todolist in browser's local storage
-  React.useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-    }
-  }, ["savedTodoList", JSON.stringify(todoList)]); // with stringify we can read the values inside todolist array
-
-  // const [todoList, setTodoList] = useSemiPersistentState();
-
   return (
-    <>
-      <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} />
-      {isLoading ? (
-        <p>Loading</p>
-      ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          exact=""
+          element={
+            <>
+              <h1>Todo List</h1>
+              <AddTodoForm onAddTodo={addTodo} />
+              {isLoading ? (
+                <p>Loading</p>
+              ) : (
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+              )}
+            </>
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
