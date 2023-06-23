@@ -2,6 +2,8 @@ import React from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import style from "./TodoListItem.module.css";
+import backroundImage from "./img/day-night.jpg";
 
 //NO USE
 //define a custom hook to syn todolist and browser local storage
@@ -124,15 +126,19 @@ function App() {
           path="/"
           exact=""
           element={
-            <>
-              <h1>Todo List</h1>
+            <div>
+              <div className={style.picture}>
+                <h1 className={style.primaryHeader}>Todo</h1>
+              </div>
               <AddTodoForm onAddTodo={addTodo} />
-              {isLoading ? (
-                <p>Loading</p>
-              ) : (
-                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-              )}
-            </>
+              <div className={style.todoList}>
+                {isLoading ? (
+                  <p>Loading</p>
+                ) : (
+                  <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+                )}
+              </div>
+            </div>
           }
         ></Route>
         <Route path="/new" element={<h1>New Todo List</h1>}></Route>
