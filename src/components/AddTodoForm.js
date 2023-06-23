@@ -1,7 +1,7 @@
 import React from "react";
 import InputWithLabel from "./InputWithLabel";
 import style from "./TodoListItem.module.css";
-import PropTypes from "prop-types"; // ES6
+import PropTypes from "prop-types";
 
 function AddTodoForm({ onAddTodo }) {
   //state of input form for adding todo title
@@ -33,7 +33,7 @@ function AddTodoForm({ onAddTodo }) {
     </form>
   );
 }
-const props = {
+AddTodoForm.propTypes = {
   onAddTodo: PropTypes.func,
 };
 export default AddTodoForm;

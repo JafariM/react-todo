@@ -18,7 +18,7 @@ function TodoList({ todoList, onRemoveTodo }) {
     </ul>
   );
 }
-const props = {
+TodoList.propTypes = {
   todoList: propTypes.array,
   onRemoveTodo: propTypes.func,
 };

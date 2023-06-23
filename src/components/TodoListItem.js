@@ -13,9 +13,9 @@ function TodoListItem({ todo, onRemoveTodo, id }) {
   );
 }
 
-const props = {
+TodoListItem.propTypes = {
   todo: propTypes.string,
   onRemoveTodo: propTypes.func,
-  id: propTypes.number,
+  id: propTypes.string,
 };
 export default TodoListItem;
