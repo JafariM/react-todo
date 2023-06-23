@@ -21,7 +21,7 @@ body{
 div.picture{
   width: 100%;
   min-height: 344px;
-  background-image: url('./img/day-night1.jpg');
+  background-image: url('../img/day-night1.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: cover;

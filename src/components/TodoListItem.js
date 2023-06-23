@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./TodoListItem.module.css";
-import img from "./img/check.png";
+import img from "../img/check.png";
 
 function TodoListItem({ todo, onRemoveTodo, id }) {
   return (
