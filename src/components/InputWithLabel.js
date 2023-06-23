@@ -1,7 +1,7 @@
 import React from "react";
+import propTypes, { object, string } from "prop-types";
 
 function InputWithLabel({ children, todoTitle, handleTitleChange }) {
-
   //add a state hook to keep input field focused after submission
   const inputRef = React.useRef();
   React.useEffect(() => {
@@ -17,10 +17,15 @@ function InputWithLabel({ children, todoTitle, handleTitleChange }) {
         name="title"
         value={todoTitle}
         onChange={handleTitleChange}
-        ref={inputRef} />
+        ref={inputRef}
+      />
     </>
-  )
-
-
+  );
 }
+const props = {
+  children: propTypes.node,
+  todoTitle: propTypes.string,
+  handleTitleChange: propTypes.func,
+};
+
 export default InputWithLabel;
