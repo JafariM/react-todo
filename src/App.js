@@ -21,7 +21,7 @@ function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   //url to Airtable
-  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/?view=Grid%20view`;
+  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/?sort[0][field]=title&sort[0][direction]=asc`;
 
   //fetching from Air table
   const fetchData = async () => {
@@ -31,6 +31,7 @@ function App() {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
       },
     };
+
     try {
       const response = await fetch(url, options);
 
@@ -38,9 +39,7 @@ function App() {
         const message = `Error: ${response.status}`;
         throw new Error(message);
       }
-
       const data = await response.json();
-
       const todos = data.records.map((todo) => {
         const newTodo = {
           id: todo.id,
