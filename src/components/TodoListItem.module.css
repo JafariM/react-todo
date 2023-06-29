@@ -21,7 +21,7 @@ body{
 div.picture{
   width: 100%;
   min-height: 344px;
-  background-image: url('./img/day-night.jpg');
+  background-image: url('../img/day-night1.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: cover;
@@ -32,6 +32,7 @@ div.todoList{
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 .form{
   width: 50%;
@@ -40,6 +41,7 @@ div.todoList{
   margin: -6% auto 1em auto;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   
 }
 .form input{
@@ -70,9 +72,21 @@ box-shadow: 5px 10px 5px #BFCBD3;
 }
 
 /* phone and tablet */
-@media (max-width:640px) and (max-width:768px) {
+@media (min-width : 800px)and (max-width:1010px) {
   div.picture{
-    height: 170px;
+    min-height: 270px;
+  }
+}
+
+@media (max-width: 795px){
+div.picture {
+    min-height: 210px;
+  }
+}
+
+@media (max-width: 530px) {
+  div.picture {
+    min-height: 120px;
   }
 }
 
