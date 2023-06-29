@@ -16,7 +16,7 @@ function TodoList({ todoList, onRemoveTodo }) {
           />
         );
       })}
-      <li className={style.footer}>
+      <li className={style.footerItem}>
         {Object.keys(todoList).length} Items left
       </li>
     </ul>
