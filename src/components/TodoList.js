@@ -1,6 +1,7 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 import propTypes from "prop-types";
+import style from "./TodoListItem.module.css";
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
@@ -15,6 +16,9 @@ function TodoList({ todoList, onRemoveTodo }) {
           />
         );
       })}
+      <li className={style.footer}>
+        {Object.keys(todoList).length} Items left
+      </li>
     </ul>
   );
 }

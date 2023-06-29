@@ -71,6 +71,10 @@ border-radius: 15px;
 box-shadow: 5px 10px 5px #BFCBD3;
 }
 
+div.footer{
+  
+}
+
 /* phone and tablet */
 @media (min-width : 800px)and (max-width:1010px) {
   div.picture{

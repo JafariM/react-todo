@@ -21,7 +21,7 @@ function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   //url to Airtable
-  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/?sort[0][field]=title&sort[0][direction]=asc`;
+  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/`;
 
   //fetching from Air table
   const fetchData = async () => {
@@ -40,7 +40,24 @@ function App() {
         throw new Error(message);
       }
       const data = await response.json();
-      const todos = data.records.map((todo) => {
+
+      // Custom callback function for sorting
+      function SortTitle(objectA, objectB) {
+        const titleA = objectA.fields.title;
+        const titleB = objectB.fields.title;
+
+        if (titleA < titleB) {
+          return 1;
+        } else if (titleA === titleB) {
+          return 0;
+        } else {
+          return -1;
+        }
+      }
+      // Sorting the array using the custom callback function
+      const sortedData = data.records.sort(SortTitle);
+
+      const todos = sortedData.map((todo) => {
         const newTodo = {
           id: todo.id,
           title: todo.fields.title,
