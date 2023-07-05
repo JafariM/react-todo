@@ -53,6 +53,9 @@ div.todoList{
   border-radius: 5px;
   background-color: #ADD8E6;
 }
+ul{
+  width: 90%;
+}
 .listItem{
   padding: 0.2em;
   margin: 0.3em;
@@ -69,6 +72,15 @@ div.todoList{
 background-color: #E9F6FB;
 border-radius: 15px;
 box-shadow: 5px 10px 5px #BFCBD3;
+}
+
+.footerItem{
+  list-style: none;
+  margin-top: 2em;
+  border-top: 2px solid;
+  padding: 5px;
+  font-style: italic;
+  color: #787373;
 }
 
 /* phone and tablet */
