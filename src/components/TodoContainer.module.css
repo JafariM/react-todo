@@ -1,40 +1,21 @@
-body{
-  background-color: #E9F6FB;
-  font-family: Charlie Text,
-  Segoe UI,
-  sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 700px;
-    
-}
-.primaryHeader{
-  font-size: 40px;
-  font-weight: 700;
-  background-image: linear-gradient(to bottom left, #004792, #87CEFA);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  margin: 0 2%;
-}
-
-div.picture{
+div.picture {
   width: 100%;
   min-height: 344px;
-  background-image: url('../img/day-night1.jpg');
+  background-image: url('./img/day-night1.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: cover;
 }
 
-div.todoList{
+div.todoList {
   width: 50%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   flex-wrap: wrap;
 }
-.form{
+
+.form {
   width: 50%;
   text-align: center;
   padding: 1.5em;
@@ -42,39 +23,48 @@ div.todoList{
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  
+
 }
-.form input{
+
+.form input {
   padding: 5px;
   width: 50%;
 }
-.form button{
-  width: 15%;
+
+.form button {
+  padding: 5px 15px;
   border-radius: 5px;
   background-color: #ADD8E6;
+
 }
-ul{
+
+ul {
   width: 90%;
 }
-.listItem{
+
+.listItem {
   padding: 0.2em;
   margin: 0.3em;
   list-style: none;
   font-size: larger;
 }
-.listItem img{
+
+.listItem img {
   margin-right: 0.6em;
 }
-.listItem img:hover{
+
+.listItem img:hover {
   cursor: pointer;
 }
-.form, .todoList{
-background-color: #E9F6FB;
-border-radius: 15px;
-box-shadow: 5px 10px 5px #BFCBD3;
+
+.form,
+.todoList {
+  background-color: #E9F6FB;
+  border-radius: 15px;
+  box-shadow: 5px 10px 5px #BFCBD3;
 }
 
-.footerItem{
+.footerItem {
   list-style: none;
   margin-top: 2em;
   border-top: 2px solid;
@@ -85,13 +75,13 @@ box-shadow: 5px 10px 5px #BFCBD3;
 
 /* phone and tablet */
 @media (min-width : 800px)and (max-width:1010px) {
-  div.picture{
+  div.picture {
     min-height: 270px;
   }
 }
 
-@media (max-width: 795px){
-div.picture {
+@media (max-width: 795px) {
+  div.picture {
     min-height: 210px;
   }
 }
@@ -101,4 +91,3 @@ div.picture {
     min-height: 120px;
   }
 }
-
