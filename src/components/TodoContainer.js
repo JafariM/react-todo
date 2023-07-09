@@ -1,13 +1,13 @@
 import React from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
-import style from "./TodoListItem.module.css";
+import style from "./TodoContainer.module.css";
 
-function TodoContainer() {
+function TodoContainer({ tableName }) {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   //url to Airtable
-  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/`;
+  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}/`;
 
   //fetching from Air table
   const fetchData = async () => {
@@ -27,7 +27,23 @@ function TodoContainer() {
       }
       const data = await response.json();
 
-      const todos = data.records.map((todo) => {
+      // Custom callback function for sorting
+      function SortTitle(objectA, objectB) {
+        const titleA = objectA.fields.title.toUpperCase();
+        const titleB = objectB.fields.title.toUpperCase();
+
+        if (titleA < titleB) {
+          return -1;
+        } else if (titleA === titleB) {
+          return 0;
+        } else {
+          return 1;
+        }
+      }
+
+      const sortedTodo = data.records.sort(SortTitle);
+
+      const todos = sortedTodo.map((todo) => {
         const newTodo = {
           id: todo.id,
           title: todo.fields.title,
@@ -70,20 +86,21 @@ function TodoContainer() {
         id: dataResponse.id,
         title: dataResponse.fields.title,
       };
+
+      const sortedData = [...todoList, fetchNewTodo];
       // Custom callback function for sorting
       function SortTitle(objectA, objectB) {
         const titleA = objectA.title.toUpperCase();
         const titleB = objectB.title.toUpperCase();
 
         if (titleA < titleB) {
-          return 1;
+          return -1;
         } else if (titleA === titleB) {
           return 0;
         } else {
-          return -1;
+          return 1;
         }
       }
-      const sortedData = [...todoList, fetchNewTodo];
       sortedData.sort(SortTitle);
       setTodoList(sortedData);
     } catch (error) {
@@ -118,13 +135,11 @@ function TodoContainer() {
   };
   React.useEffect(() => {
     fetchData();
-  }, []);
+  }, [tableName]);
 
   return (
     <div>
-      <div className={style.picture}>
-        <h1 className={style.primaryHeader}>Todo</h1>
-      </div>
+      <div className={style.picture}></div>
       <AddTodoForm onAddTodo={addTodo} />
       <div className={style.todoList}>
         {isLoading ? (

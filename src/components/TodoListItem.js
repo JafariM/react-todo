@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./TodoListItem.module.css";
-import img from "../img/check.png";
+import style from "./TodoContainer.module.css";
+import img from "./img/check.png";
 import propTypes from "prop-types";
 
 function TodoListItem({ todo, onRemoveTodo, id }) {

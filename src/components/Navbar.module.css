@@ -1,0 +1,41 @@
+.navbar {
+  max-width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  max-width: 100%;
+  justify-content: flex-end;
+}
+
+.item {
+  margin: 0 10px;
+}
+
+.link {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ADD8E6;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.primaryHeader {
+  font-size: 40px;
+  font-weight: 700;
+  background-image: linear-gradient(to bottom left, #004792, #87CEFA);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin: 0;
+}
