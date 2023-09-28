@@ -5,7 +5,9 @@
 
 This is a simple Todo application that allows users to add and remove tasks from their Todo list. The application integrates with Airtable to store and manage the Todo items.
 
-![Screenshot](screenshot.png)
+![Todo App Screenshot](https://github.com/JafariM/react-todo/blob/main/src/components/img/todo.png?raw=true)
+
+
 
 ## Features
 
